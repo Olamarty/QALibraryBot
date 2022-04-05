@@ -1,13 +1,28 @@
 package main
 
 import (
+	"encoding/json"
 	"log"
+	"os"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
+type Config struct {
+	TelegramBotToken string
+}
+
 func main() {
-	bot, err := tgbotapi.NewBotAPI("5039188251:AAFOCrkfYHeBrT9ShBtXOUnkoZikRLIZonk")
+	file, _ := os.Open("config.json")
+	decoder := json.NewDecoder(file)
+	configuration := Config{}
+	err := decoder.Decode(&configuration)
+	if err != nil {
+		log.Panic(err)
+	}
+
+	bot, err := tgbotapi.NewBotAPI(configuration.TelegramBotToken)
+
 	if err != nil {
 		log.Panic(err)
 	}
@@ -47,4 +62,5 @@ func main() {
 			bot.Send(tgbotapi.NewMessage(update.Message.Chat.ID, "Я не знаком с этой командой. выбери что-нибудь из меню!"))
 		}
 	}
+
 }
