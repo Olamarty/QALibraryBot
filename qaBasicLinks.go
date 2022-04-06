@@ -1,6 +1,7 @@
 package main
 
-var qaBasicLinks = `url1 - ресурс А
-url2 - ресурс Б
-<a href="http://www.example.com/">inline URL</a>
+var qaBasicLinks = `
+<a href="https://tproger.ru/translations/sql-recap/?utm_referrer=recommendation-banner">SQL-команды</a>
+<a href="https://metanit.com/go/tutorial/">курс</a>
+<a href="https://metanit.com/go/tutorial/">курс</a>
 `

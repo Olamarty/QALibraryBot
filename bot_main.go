@@ -54,10 +54,22 @@ func main() {
 			qaAutomaticMessage := tgbotapi.NewMessage(update.Message.Chat.ID, qaAutomaticLinks)
 			qaAutomaticMessage.ParseMode = "HTML"
 			bot.Send(qaAutomaticMessage)
+		case "/protocols_helper":
+			protocolMessage := tgbotapi.NewMessage(update.Message.Chat.ID, protocolLinks)
+			protocolMessage.ParseMode = "HTML"
+			bot.Send(protocolMessage)
+		case "/git_helper":
+			gitMessage := tgbotapi.NewMessage(update.Message.Chat.ID, gitLinks)
+			gitMessage.ParseMode = "HTML"
+			bot.Send(gitMessage)
 		case "/go_basic":
 			goBasicMessage := tgbotapi.NewMessage(update.Message.Chat.ID, goBasicLinks)
 			goBasicMessage.ParseMode = "HTML"
 			bot.Send(goBasicMessage)
+		case "/go_tgbot":
+			goTgBotMessage := tgbotapi.NewMessage(update.Message.Chat.ID, goTgBotLinks)
+			goTgBotMessage.ParseMode = "HTML"
+			bot.Send(goTgBotMessage)
 		default:
 			bot.Send(tgbotapi.NewMessage(update.Message.Chat.ID, "Я не знаком с этой командой. выбери что-нибудь из меню!"))
 		}
