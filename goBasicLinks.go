@@ -4,7 +4,7 @@ var goBasicLinks = `
 <a href="https://golangify.com/">миленький курс по GO</a>
 <a href="https://metanit.com/go/tutorial/">емкий курс по GO</a>
 <a href="https://github.com/Konstantin8105/Effective_Go_RU">эффективный GO</a>
-<a https://tproger.ru/video/uchimsja-razrabatyvat-na-golang-urok-15-rabota-s-json/">Видеоуроки GO</a>
+<a href="https://tproger.ru/video/uchimsja-razrabatyvat-na-golang-urok-15-rabota-s-json/">Видеоуроки GO</a>
 <a href="https://pkg.go.dev/std">Официальная библиотека GO</a>
 <a href="http://golang-book.ru/">Большая книга о GO</a>
 <a href="https://sefus.ru/little-go-book/">Маленькая книга o GO</a>
