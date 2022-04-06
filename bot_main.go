@@ -13,7 +13,7 @@ type Config struct {
 }
 
 func main() {
-	file, _ := os.Open("config.json")
+	file, _ := os.Open("/root/config.json")
 	decoder := json.NewDecoder(file)
 	configuration := Config{}
 	err := decoder.Decode(&configuration)
