@@ -1,8 +1,8 @@
 package main
 
 var goBasicLinks = `
-<a href="https://golangify.com/">курс по GO - 1</a>
-<a href="https://metanit.com/go/tutorial/">курс по GO - 2</a>
+<a href="https://golangify.com/">курс по GO 1</a>
+<a href="https://metanit.com/go/tutorial/">курс по GO 2</a>
 <a href="https://github.com/Konstantin8105/Effective_Go_RU">эффективный GO</a>
 <a https://tproger.ru/video/uchimsja-razrabatyvat-na-golang-urok-15-rabota-s-json/">Видеоуроки GO</a>
 <a href="https://pkg.go.dev/std">Официальная библиотека GO</a>
