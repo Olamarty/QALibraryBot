@@ -1,0 +1,11 @@
+[Unit]
+Description=qabot
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5s
+ExecStart=/root/qabot
+
+[Install]
+WantedBy=multi-user.target
