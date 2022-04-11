@@ -63,10 +63,10 @@ func main() {
 			text = "ПИШЕМ БОТА НА GO"
 		case "/start":
 			links = nil
-			text = "Добро пожаловать в QA-Library! Выбери в меню, что будем изучать⬇"
+			bot.Send(tgbotapi.NewMessage(update.Message.Chat.ID, "Добро пожаловать в QA-Library! Выбери в меню, что будем изучать⬇"))
 		default:
 			links = nil
-			text = "Я не знаком с этой командой. выбери что-то из меню⬇"
+			bot.Send(tgbotapi.NewMessage(update.Message.Chat.ID, "Я не знаком с этой командой. выбери что-то из меню⬇"))
 		}
 		msg := tgbotapi.NewMessage(update.Message.Chat.ID, text)
 		msg.ReplyMarkup = newKeyboard(links)
