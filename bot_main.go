@@ -51,7 +51,7 @@ func main() {
 			text = "АВТОМАТИЗАЦИЯ"
 		case "/protocols_helper":
 			links = protocolLinks
-			text = "SSH, SCP, HTTP и пр."
+			text = "О ПРОТОКОЛАХ"
 		case "/git_helper":
 			links = gitLinks
 			text = "GITHUB"
