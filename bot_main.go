@@ -32,7 +32,8 @@ func main() {
 	u := tgbotapi.NewUpdate(0)
 	u.Timeout = 15
 	updates, _ := bot.GetUpdatesChan(u)
-	links := []buttonLink{}
+	var links []buttonLink
+	var text string
 
 	for update := range updates {
 		if update.Message == nil {
@@ -41,26 +42,33 @@ func main() {
 		switch update.Message.Text {
 		case "/qa_basic":
 			links = qaBasicLinks
+			text = "QA ОСНОВЫ"
 		case "/qa_manager":
 			links = qaManagerLinks
+			text = "УПРАВЛЕНИЕ"
 		case "/qa_automatic":
 			links = qaAutomaticLinks
+			text = "АВТОМАТИЗАЦИЯ"
 		case "/protocols_helper":
 			links = protocolLinks
+			text = "SSH, SCP, HTTP и пр."
 		case "/git_helper":
 			links = gitLinks
+			text = "GITHUB"
 		case "/go_basic":
 			links = goBasicLinks
+			text = "GOLANG"
 		case "/go_tgbot":
 			links = goTgBotLinks
+			text = "ПИШЕМ БОТА НА GO"
 		case "/start":
 			links = nil
-			bot.Send(tgbotapi.NewMessage(update.Message.Chat.ID, "Добро пожаловать в QA-Library! Выбери в меню, что будем изучать⬇"))
+			text = "Добро пожаловать в QA-Library! Выбери в меню, что будем изучать⬇"
 		default:
 			links = nil
-			bot.Send(tgbotapi.NewMessage(update.Message.Chat.ID, "Я не знаком с этой командой. выбери что-нибудь из меню⬇"))
+			text = "Я не знаком с этой командой. выбери что-то из меню⬇"
 		}
-		msg := tgbotapi.NewMessage(update.Message.Chat.ID, "вот что у меня есть:")
+		msg := tgbotapi.NewMessage(update.Message.Chat.ID, text)
 		msg.ReplyMarkup = newKeyboard(links)
 
 		bot.Send(msg)
