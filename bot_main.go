@@ -13,6 +13,7 @@ type Config struct {
 }
 
 func main() {
+
 	file, _ := os.Open("/root/config.json")
 	decoder := json.NewDecoder(file)
 	configuration := Config{}
@@ -22,57 +23,62 @@ func main() {
 	}
 
 	bot, err := tgbotapi.NewBotAPI(configuration.TelegramBotToken)
-
 	if err != nil {
 		log.Panic(err)
 	}
 
 	bot.Debug = true
 	log.Printf("Authorized on account %s", bot.Self.UserName)
-
 	u := tgbotapi.NewUpdate(0)
 	u.Timeout = 15
-
 	updates, _ := bot.GetUpdatesChan(u)
+	links := []buttonLink{}
 
 	for update := range updates {
 		if update.Message == nil {
 			continue
 		}
 		switch update.Message.Text {
-		case "/start":
-			bot.Send(tgbotapi.NewMessage(update.Message.Chat.ID, "Добро пожаловать в QA-Library! Выбери в меню, что будем изучать ⬇"))
 		case "/qa_basic":
-			qaBasicMessage := tgbotapi.NewMessage(update.Message.Chat.ID, qaBasicLinks)
-			qaBasicMessage.ParseMode = "HTML"
-			bot.Send(qaBasicMessage)
+			links = qaBasicLinks
 		case "/qa_manager":
-			qaManagerMessage := tgbotapi.NewMessage(update.Message.Chat.ID, qaManagerLinks)
-			qaManagerMessage.ParseMode = "HTML"
-			bot.Send(qaManagerMessage)
+			links = qaManagerLinks
 		case "/qa_automatic":
-			qaAutomaticMessage := tgbotapi.NewMessage(update.Message.Chat.ID, qaAutomaticLinks)
-			qaAutomaticMessage.ParseMode = "HTML"
-			bot.Send(qaAutomaticMessage)
+			links = qaAutomaticLinks
 		case "/protocols_helper":
-			protocolMessage := tgbotapi.NewMessage(update.Message.Chat.ID, protocolLinks)
-			protocolMessage.ParseMode = "HTML"
-			bot.Send(protocolMessage)
+			links = protocolLinks
 		case "/git_helper":
-			gitMessage := tgbotapi.NewMessage(update.Message.Chat.ID, gitLinks)
-			gitMessage.ParseMode = "HTML"
-			bot.Send(gitMessage)
+			links = gitLinks
 		case "/go_basic":
-			goBasicMessage := tgbotapi.NewMessage(update.Message.Chat.ID, goBasicLinks)
-			goBasicMessage.ParseMode = "HTML"
-			bot.Send(goBasicMessage)
+			links = goBasicLinks
 		case "/go_tgbot":
-			goTgBotMessage := tgbotapi.NewMessage(update.Message.Chat.ID, goTgBotLinks)
-			goTgBotMessage.ParseMode = "HTML"
-			bot.Send(goTgBotMessage)
+			links = goTgBotLinks
+		case "/start":
+			links = nil
+			bot.Send(tgbotapi.NewMessage(update.Message.Chat.ID, "Добро пожаловать в QA-Library! Выбери в меню, что будем изучать⬇"))
 		default:
-			bot.Send(tgbotapi.NewMessage(update.Message.Chat.ID, "Я не знаком с этой командой. выбери что-нибудь из меню!"))
+			links = nil
+			bot.Send(tgbotapi.NewMessage(update.Message.Chat.ID, "Я не знаком с этой командой. выбери что-нибудь из меню⬇"))
 		}
+		msg := tgbotapi.NewMessage(update.Message.Chat.ID, "вот что у меня есть:")
+		msg.ReplyMarkup = newKeyboard(links)
+
+		bot.Send(msg)
+	}
+}
+
+type buttonLink struct {
+	Name string
+	Link string
+}
+
+func newKeyboard(btns []buttonLink) tgbotapi.InlineKeyboardMarkup {
+	var out [][]tgbotapi.InlineKeyboardButton
+	for _, btn := range btns {
+		out = append(out, []tgbotapi.InlineKeyboardButton{tgbotapi.NewInlineKeyboardButtonURL(btn.Name, btn.Link)})
 	}
 
+	kbrd := tgbotapi.NewInlineKeyboardMarkup(out...)
+
+	return kbrd
 }

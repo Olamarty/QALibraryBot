@@ -1,7 +1,16 @@
 package main
 
-var qaManagerLinks = `
-<a href="https://metanit.com/go/tutorial/">URL</a>
-<a href="https://metanit.com/go/tutorial/">URL</a>
-<a href="https://metanit.com/go/tutorial/">URL</a>
-`
+var qaManagerLinks = []buttonLink{
+	{
+		Name: "Первая кнопка",
+		Link: "https://google.com",
+	},
+	{
+		Name: "Вторая кнопка",
+		Link: "https://yandex.ru",
+	},
+	{
+		Name: "Третья кнопка",
+		Link: "https://mail.ru",
+	},
+}
