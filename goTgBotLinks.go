@@ -6,6 +6,10 @@ var goTgBotLinks = []buttonLink{
 		Link: "https://core.telegram.org/bots#inline-keyboards-and-on-the-fly-updating",
 	},
 	{
+		Name: "tgbotAPI",
+		Link: "https://core.telegram.org/bots/api",
+	},
+	{
 		Name: "Бот пошагово (habr)",
 		Link: "https://habr.com/ru/post/351060/",
 	},
@@ -22,15 +26,15 @@ var goTgBotLinks = []buttonLink{
 		Link: "https://intensive.skillbox.ru/go/record/",
 	},
 	{
-		Name: "tgbotAPI: Основное",
+		Name: "GOtgbotAPI: Основное",
 		Link: "https://pkg.go.dev/github.com/go-telegram-bot-api/telegram-bot-api/v5#NewBotAPIWithAPIEndpoint",
 	},
 	{
-		Name: "tgbotAPI: Message",
+		Name: "GOtgbotAPI: Message",
 		Link: "https://pkg.go.dev/github.com/go-telegram-bot-api/telegram-bot-api/v5#MessageConfig",
 	},
 	{
-		Name: "tgbotAPI: html-style",
+		Name: "GOtgbotAPI: html-style",
 		Link: "https://core.telegram.org/bots/api#html-style",
 	},
 	{

@@ -55,7 +55,7 @@ func main() {
 		case "/api_testing":
 			links = apiLinks
 			text = "API testing"
-		case "git_helper":
+		case "/git_helper":
 			links = gitLinks
 			text = "GIThub"
 		case "/go_basic":
