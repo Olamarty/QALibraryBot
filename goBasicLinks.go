@@ -18,7 +18,11 @@ var goBasicLinks = []buttonLink{
 		Link: "https://tproger.ru/video/uchimsja-razrabatyvat-na-golang-urok-15-rabota-s-json/",
 	},
 	{
-		Name: "Библиотека",
+		Name: "Еще видеоуроки",
+		Link: "https://www.youtube.com/watch?v=9Pk7xAT_aCU&list=PLrCZzMib1e9q-X5V9pTM6J0AemRWseM7I",
+	},
+	{
+		Name: "Официальная библиотека",
 		Link: "https://pkg.go.dev/std",
 	},
 	{
@@ -30,7 +34,7 @@ var goBasicLinks = []buttonLink{
 		Link: "https://sefus.ru/little-go-book/",
 	},
 	{
-		Name: "Подводные камни",
+		Name: "50 оттенков GO",
 		Link: "https://habr.com/ru/company/vk/blog/314804/",
 	},
 }
