@@ -42,25 +42,28 @@ func main() {
 		switch update.Message.Text {
 		case "/qa_basic":
 			links = qaBasicLinks
-			text = "QA ОСНОВЫ"
+			text = "QA основы"
 		case "/qa_manager":
 			links = qaManagerLinks
-			text = "УПРАВЛЕНИЕ"
+			text = "Управление"
 		case "/qa_automatic":
 			links = qaAutomaticLinks
-			text = "АВТОМАТИЗАЦИЯ"
+			text = "Автоматизация"
 		case "/protocols_helper":
 			links = protocolLinks
-			text = "О ПРОТОКОЛАХ"
-		case "/git_helper":
+			text = "О протоколах"
+		case "/api_testing":
+			links = apiLinks
+			text = "API testing"
+		case "git_helper":
 			links = gitLinks
-			text = "GITHUB"
+			text = "GIThub"
 		case "/go_basic":
 			links = goBasicLinks
 			text = "GOLANG"
 		case "/go_tgbot":
 			links = goTgBotLinks
-			text = "ПИШЕМ БОТА НА GO"
+			text = "Пишем бота на GO"
 		case "/start":
 			links = nil
 			bot.Send(tgbotapi.NewMessage(update.Message.Chat.ID, "Добро пожаловать в QA-Library! Выбери в меню, что будем изучать⬇"))

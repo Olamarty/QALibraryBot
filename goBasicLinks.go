@@ -22,6 +22,10 @@ var goBasicLinks = []buttonLink{
 		Link: "https://www.youtube.com/watch?v=9Pk7xAT_aCU&list=PLrCZzMib1e9q-X5V9pTM6J0AemRWseM7I",
 	},
 	{
+		Name: "И еще видеоуроки",
+		Link: "https://www.youtube.com/watch?v=nI8YJSKjOSY&list=PLStB0N4PvLQKT8VASox1w5VcUY7O-u5gh",
+	},
+	{
 		Name: "Официальная библиотека",
 		Link: "https://pkg.go.dev/std",
 	},
