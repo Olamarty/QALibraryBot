@@ -21,4 +21,8 @@ var apiLinks = []buttonLink{
 		Name: "Видео-уроки APItesting",
 		Link: "https://www.youtube.com/c/okiseleva/playlists",
 	},
+	{
+		Name: "Коротко о GoCD",
+		Link: "https://youtu.be/Z03XAMPrtw4",
+	},
 }
