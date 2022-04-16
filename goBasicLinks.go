@@ -41,4 +41,12 @@ var goBasicLinks = []buttonLink{
 		Name: "50 оттенков GO",
 		Link: "https://habr.com/ru/company/vk/blog/314804/",
 	},
+	{
+		Name: "Чистая архитектура 1,2",
+		Link: "https://tproger.ru/video/uroki-po-golang-advanced-chistaja-arhitektura-clean-architecture-chast-1-2/",
+	},
+	{
+		Name: "Чистая архитектура 3",
+		Link: "https://www.youtube.com/watch?v=mesl2Si6saw",
+	},
 }
