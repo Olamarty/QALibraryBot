@@ -64,12 +64,15 @@ func main() {
 		case "/go_tgbot":
 			links = goTgBotLinks
 			text = "Пишем бота на GO"
+		case "/coding":
+			links = codingLinks
+			text = "Чистый код"
 		case "/start":
-			links = nil
 			bot.Send(tgbotapi.NewMessage(update.Message.Chat.ID, "Добро пожаловать в QA-Library! Выбери в меню, что будем изучать⬇"))
+			continue
 		default:
-			links = nil
 			bot.Send(tgbotapi.NewMessage(update.Message.Chat.ID, "Я не знаком с этой командой. выбери что-то из меню⬇"))
+			continue
 		}
 		msg := tgbotapi.NewMessage(update.Message.Chat.ID, text)
 		msg.ReplyMarkup = newKeyboard(links)
