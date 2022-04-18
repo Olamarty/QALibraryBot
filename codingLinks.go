@@ -22,7 +22,7 @@ var codingLinks = []buttonLink{
 		Link: "https://codernet.ru/books/software_development/chistyj_cod_robert_martin/",
 	},
 	{
-		Name: "Соверш.код (book)",
+		Name: "Совершенный код (book)",
 		Link: "https://codernet.ru/books/software_development/sovershennyj_kod_master_class/",
 	},
 	{
