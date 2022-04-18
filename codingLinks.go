@@ -18,6 +18,10 @@ var codingLinks = []buttonLink{
 		Link: "https://codernet.ru/books/software_development/grokaem_algoritmy/",
 	},
 	{
+		Name: "Жемчужины прогр-я (book)",
+		Link: "https://sd.blackball.lv/books/18790?mode=read",
+	},
+	{
 		Name: "Чистый код (book)",
 		Link: "https://codernet.ru/books/software_development/chistyj_cod_robert_martin/",
 	},
