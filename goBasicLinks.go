@@ -41,4 +41,12 @@ var goBasicLinks = []buttonLink{
 		Name: "50 оттенков GO",
 		Link: "https://habr.com/ru/company/vk/blog/314804/",
 	},
+	{
+		Name: "Go: большая шпаргалка",
+		Link: "https://habr.com/ru/post/658623/",
+	},
+	{
+		Name: "Go: разработка RESTсервера",
+		Link: "https://habr.com/ru/company/vk/blog/314804/",
+	},
 }

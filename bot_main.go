@@ -8,8 +8,61 @@ import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
+var cmdMessages = map[string]cmdData{
+	"/qa_basic": {
+		links: qaBasicLinks,
+		text:  "QA основы",
+	},
+	"/qa_manager": {
+		links: qaManagerLinks,
+		text:  "Управление",
+	},
+	"/qa_automatic": {
+		links: qaAutomaticLinks,
+		text:  "Автоматизация",
+	},
+	"/protocols_helper": {
+		links: protocolLinks,
+		text:  "О протоколах",
+	},
+	"/api_testing": {
+		links: apiLinks,
+		text:  "API testing",
+	},
+	"/git_helper": {
+		links: gitLinks,
+		text:  "GIThub",
+	},
+	"/go_basic": {
+		links: goBasicLinks,
+		text:  "GOLANG",
+	},
+	"/go_tgbot": {
+		links: goTgBotLinks,
+		text:  "Пишем бота на GO",
+	},
+	"/coding": {
+		links: codingLinks,
+		text:  "Чистый код",
+	},
+	"/start": {
+		links: nil,
+		text:  "Добро пожаловать в QA-Library! Выбери в меню, что будем изучать⬇",
+	},
+}
+
+type cmdData struct {
+	links []buttonLink
+	text  string
+}
+
 type Config struct {
 	TelegramBotToken string
+}
+
+type buttonLink struct {
+	Name string
+	Link string
 }
 
 func main() {
@@ -32,58 +85,31 @@ func main() {
 	u := tgbotapi.NewUpdate(0)
 	u.Timeout = 15
 	updates, _ := bot.GetUpdatesChan(u)
-	var links []buttonLink
-	var text string
 
 	for update := range updates {
 		if update.Message == nil {
 			continue
 		}
-		switch update.Message.Text {
-		case "/qa_basic":
-			links = qaBasicLinks
-			text = "QA основы"
-		case "/qa_manager":
-			links = qaManagerLinks
-			text = "Управление"
-		case "/qa_automatic":
-			links = qaAutomaticLinks
-			text = "Автоматизация"
-		case "/protocols_helper":
-			links = protocolLinks
-			text = "О протоколах"
-		case "/api_testing":
-			links = apiLinks
-			text = "API testing"
-		case "/git_helper":
-			links = gitLinks
-			text = "GIThub"
-		case "/go_basic":
-			links = goBasicLinks
-			text = "GOLANG"
-		case "/go_tgbot":
-			links = goTgBotLinks
-			text = "Пишем бота на GO"
-		case "/coding":
-			links = codingLinks
-			text = "Чистый код"
-		case "/start":
-			bot.Send(tgbotapi.NewMessage(update.Message.Chat.ID, "Добро пожаловать в QA-Library! Выбери в меню, что будем изучать⬇"))
-			continue
-		default:
-			bot.Send(tgbotapi.NewMessage(update.Message.Chat.ID, "Я не знаком с этой командой. выбери что-то из меню⬇"))
+
+		// Проверяем наличие команды, если нужно будет обработать обычный текст
+		// тогда обрабатываем внутри блока с continue
+		if !update.Message.IsCommand() {
 			continue
 		}
-		msg := tgbotapi.NewMessage(update.Message.Chat.ID, text)
-		msg.ReplyMarkup = newKeyboard(links)
+
+		var msg tgbotapi.MessageConfig
+
+		if data, ok := cmdMessages[update.Message.Text]; ok {
+			msg = tgbotapi.NewMessage(update.Message.Chat.ID, data.text)
+			if data.links != nil {
+				msg.ReplyMarkup = newKeyboard(data.links)
+			}
+		} else {
+			msg = tgbotapi.NewMessage(update.Message.Chat.ID, "Я не знаком с этой командой. выбери что-то из меню⬇")
+		}
 
 		bot.Send(msg)
 	}
-}
-
-type buttonLink struct {
-	Name string
-	Link string
 }
 
 func newKeyboard(btns []buttonLink) tgbotapi.InlineKeyboardMarkup {
