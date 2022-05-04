@@ -115,10 +115,20 @@ func main() {
 func newKeyboard(btns []buttonLink) tgbotapi.InlineKeyboardMarkup {
 	var out [][]tgbotapi.InlineKeyboardButton
 	for _, btn := range btns {
-		out = append(out, []tgbotapi.InlineKeyboardButton{tgbotapi.NewInlineKeyboardButtonURL(btn.Name, btn.Link)})
+		out = append(out, []tgbotapi.InlineKeyboardButton{
+			tgbotapi.NewInlineKeyboardButtonURL(btn.Name, btn.Link),
+			tgbotapi.NewInlineKeyboardButtonData("KEY1", "KEY1"),
+		})
 	}
 
 	kbrd := tgbotapi.NewInlineKeyboardMarkup(out...)
-
+	/*
+		kbrd := tgbotapi.NewInlineKeyboardMarkup(
+			tgbotapi.NewInlineKeyboardRow(
+				tgbotapi.NewInlineKeyboardButtonData("KEY1", "KEY1"),
+		        tgbotapi.InlineKeyboardButton(btn),
+			),
+		)
+	*/
 	return kbrd
 }
