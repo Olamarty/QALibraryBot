@@ -112,18 +112,30 @@ func main() {
 	}
 }
 
-var emojiOff = "◻"
+var emoji string
+var btnData string
 
-//var emojiOn = "☑"
-var btnData = "btnData"
+func emojiFunc(emoji, btnData string) (string, string) {
+	if btnData == "process" {
+		emoji = "▶"
+		btnData = "done"
+	} else if btnData == "done" {
+		emoji = "✅"
+		btnData = "empty"
+	} else {
+		emoji = "◻"
+		btnData = "process"
+	}
+	return emoji, btnData
+}
 
 func newKeyboard(btns []buttonLink) tgbotapi.InlineKeyboardMarkup {
 	var out [][]tgbotapi.InlineKeyboardButton
-	for _, btn := range btns {
 
+	for _, btn := range btns {
 		out = append(out, []tgbotapi.InlineKeyboardButton{
 			tgbotapi.NewInlineKeyboardButtonURL(btn.Name, btn.Link),
-			tgbotapi.NewInlineKeyboardButtonData(emojiOff, btnData),
+			tgbotapi.NewInlineKeyboardButtonData(emojiFunc(emoji, btnData)),
 		})
 	}
 
