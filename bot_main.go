@@ -112,23 +112,22 @@ func main() {
 	}
 }
 
+var emojiOff = "◻"
+
+//var emojiOn = "☑"
+var btnData = "btnData"
+
 func newKeyboard(btns []buttonLink) tgbotapi.InlineKeyboardMarkup {
 	var out [][]tgbotapi.InlineKeyboardButton
 	for _, btn := range btns {
+
 		out = append(out, []tgbotapi.InlineKeyboardButton{
 			tgbotapi.NewInlineKeyboardButtonURL(btn.Name, btn.Link),
-			tgbotapi.NewInlineKeyboardButtonData("KEY1", "KEY1"),
+			tgbotapi.NewInlineKeyboardButtonData(emojiOff, btnData),
 		})
 	}
 
 	kbrd := tgbotapi.NewInlineKeyboardMarkup(out...)
-	/*
-		kbrd := tgbotapi.NewInlineKeyboardMarkup(
-			tgbotapi.NewInlineKeyboardRow(
-				tgbotapi.NewInlineKeyboardButtonData("KEY1", "KEY1"),
-		        tgbotapi.InlineKeyboardButton(btn),
-			),
-		)
-	*/
+
 	return kbrd
 }
