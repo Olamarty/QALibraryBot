@@ -90,11 +90,11 @@ func main() {
 
 	for update := range updates {
 
-		if update.Message == nil && update.InlineQuery != nil {
-			if update.InlineQuery.Query == "process" {
+		if update.Message == nil && update.CallbackQuery != nil {
+			if update.CallbackQuery.Data == "process" {
 				emoji = "▶"
 				btnData = "done"
-			} else if update.InlineQuery.Query == "done" {
+			} else if update.CallbackQuery.Data == "done" {
 				emoji = "✅"
 				btnData = "empty"
 			} else {
