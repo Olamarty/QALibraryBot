@@ -89,6 +89,7 @@ func main() {
 	updates, _ := bot.GetUpdatesChan(u)
 
 	for update := range updates {
+
 		if update.Message == nil && update.InlineQuery != nil {
 			if update.InlineQuery.Query == "process" {
 				emoji = "▶"
@@ -100,7 +101,8 @@ func main() {
 				emoji = "◻"
 				btnData = "process"
 			}
-		} else if update.Message == nil {
+		}
+		if update.Message == nil {
 			continue
 		}
 
