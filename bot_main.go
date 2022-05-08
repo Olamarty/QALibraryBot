@@ -90,6 +90,16 @@ func main() {
 
 	for update := range updates {
 
+		if update.Message == nil && update.CallbackQuery == nil {
+			continue
+		}
+
+		// Проверяем наличие команды, если нужно будет обработать обычный текст
+		// тогда обрабатываем внутри блока с continue
+		if !update.Message.IsCommand() {
+			continue
+		}
+
 		if update.Message == nil && update.CallbackQuery != nil {
 			if update.CallbackQuery.Data == "process" {
 				emoji = "▶"
@@ -101,15 +111,6 @@ func main() {
 				emoji = "◻"
 				btnData = "process"
 			}
-		}
-		if update.Message == nil {
-			continue
-		}
-
-		// Проверяем наличие команды, если нужно будет обработать обычный текст
-		// тогда обрабатываем внутри блока с continue
-		if !update.Message.IsCommand() {
-			continue
 		}
 
 		var msg tgbotapi.MessageConfig
@@ -124,6 +125,7 @@ func main() {
 		}
 
 		bot.Send(msg)
+
 	}
 }
 
