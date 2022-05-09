@@ -118,6 +118,7 @@ func main() {
 		if data, ok := cmdMessages[update.Message.Text]; ok {
 			msg = tgbotapi.NewMessage(update.Message.Chat.ID, data.text)
 			if data.links != nil {
+				msg.ReplyMarkup = tgbotapi.NewRemoveKeyboard(true)
 				msg.ReplyMarkup = newKeyboard(data.links)
 			}
 		} else {
