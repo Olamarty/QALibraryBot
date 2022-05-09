@@ -8,8 +8,9 @@ import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
-var emoji string
-var btnData string
+var emoji string = "◻"
+var btnData string = "process"
+
 var cmdMessages = map[string]cmdData{
 	"/qa_basic": {
 		links: qaBasicLinks,
@@ -89,6 +90,9 @@ func main() {
 	updates, _ := bot.GetUpdatesChan(u)
 
 	for update := range updates {
+		if update.Message == nil {
+			continue
+		}
 		/*
 			if update.Message == nil && update.CallbackQuery != nil {
 				if update.CallbackQuery.Data == "process" {
@@ -103,12 +107,7 @@ func main() {
 				}
 			}
 		*/
-		if update.Message == nil && update.CallbackQuery == nil {
-			continue
-		}
 
-		// Проверяем наличие команды, если нужно будет обработать обычный текст
-		// тогда обрабатываем внутри блока с continue
 		if !update.Message.IsCommand() {
 			continue
 		}
