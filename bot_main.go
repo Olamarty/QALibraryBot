@@ -93,20 +93,19 @@ func main() {
 		if update.Message == nil && update.CallbackQuery == nil {
 			continue
 		}
-		/*
-			if update.Message == nil && update.CallbackQuery != nil {
-				if update.CallbackQuery.Data == "process" {
-					emoji = "▶"
-					btnData = "done"
-				} else if update.CallbackQuery.Data == "done" {
-					emoji = "✅"
-					btnData = "empty"
-				} else {
-					emoji = "◻"
-					btnData = "process"
-				}
+
+		if update.Message == nil && update.CallbackQuery != nil {
+			if update.CallbackQuery.Data == "process" {
+				emoji = "▶"
+				btnData = "done"
+			} else if update.CallbackQuery.Data == "done" {
+				emoji = "✅"
+				btnData = "empty"
+			} else {
+				emoji = "◻"
+				btnData = "process"
 			}
-		*/
+		}
 
 		if !update.Message.IsCommand() {
 			continue
