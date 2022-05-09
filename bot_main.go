@@ -96,7 +96,7 @@ func main() {
 				emoji = "▶"
 				btnData = "done"
 			} else if update.CallbackQuery.Data == "done" {
-				emoji = "✅"
+				emoji = "✔"
 				btnData = "empty"
 			} else {
 				emoji = "◻"
