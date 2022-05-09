@@ -104,15 +104,15 @@ func main() {
 			}
 			continue
 		}
-		/*
-			if update.Message == nil {
-				continue
-			}
 
-			if !update.Message.IsCommand() {
-				continue
-			}
-		*/
+		if update.Message == nil {
+			continue
+		}
+
+		if !update.Message.IsCommand() {
+			continue
+		}
+
 		var msg tgbotapi.MessageConfig
 
 		if data, ok := cmdMessages[update.Message.Text]; ok {
