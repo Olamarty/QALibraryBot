@@ -102,6 +102,7 @@ func main() {
 				emoji = "◻"
 				btnData = "process"
 			}
+			continue
 		}
 		/*
 			if update.Message == nil {
