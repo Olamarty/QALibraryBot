@@ -90,11 +90,8 @@ func main() {
 	updates, _ := bot.GetUpdatesChan(u)
 
 	for update := range updates {
-		if update.Message == nil && update.CallbackQuery == nil {
-			continue
-		}
 
-		if update.Message == nil && update.CallbackQuery != nil {
+		if update.CallbackQuery != nil {
 			if update.CallbackQuery.Data == "process" {
 				emoji = "▶"
 				btnData = "done"
@@ -106,11 +103,15 @@ func main() {
 				btnData = "process"
 			}
 		}
+		/*
+			if update.Message == nil {
+				continue
+			}
 
-		if !update.Message.IsCommand() {
-			continue
-		}
-
+			if !update.Message.IsCommand() {
+				continue
+			}
+		*/
 		var msg tgbotapi.MessageConfig
 
 		if data, ok := cmdMessages[update.Message.Text]; ok {
