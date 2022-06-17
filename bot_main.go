@@ -9,9 +9,9 @@ import (
 )
 
 var cmdMessages = map[string]cmdData{
-	"/qa_basic": {
-		links: qaBasicLinks,
-		text:  "QA основы",
+	"/ndm_materials": {
+		links: ndmLinks,
+		text:  "NDM materials",
 	},
 	"/qa_manager": {
 		links: qaManagerLinks,
