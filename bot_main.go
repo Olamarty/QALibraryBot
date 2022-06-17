@@ -8,9 +8,6 @@ import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
-var emoji string = "◻"
-var btnData string = "process"
-
 var cmdMessages = map[string]cmdData{
 	"/qa_basic": {
 		links: qaBasicLinks,
@@ -90,25 +87,12 @@ func main() {
 	updates, _ := bot.GetUpdatesChan(u)
 
 	for update := range updates {
-
-		if update.CallbackQuery != nil {
-			if update.CallbackQuery.Data == "process" {
-				emoji = "▶"
-				btnData = "done"
-			} else if update.CallbackQuery.Data == "done" {
-				emoji = "✔"
-				btnData = "empty"
-			} else {
-				emoji = "◻"
-				btnData = "process"
-			}
-			continue
-		}
-
 		if update.Message == nil {
 			continue
 		}
 
+		// Проверяем наличие команды, если нужно будет обработать обычный текст
+		// тогда обрабатываем внутри блока с continue
 		if !update.Message.IsCommand() {
 			continue
 		}
@@ -118,7 +102,6 @@ func main() {
 		if data, ok := cmdMessages[update.Message.Text]; ok {
 			msg = tgbotapi.NewMessage(update.Message.Chat.ID, data.text)
 			if data.links != nil {
-				msg.ReplyMarkup = tgbotapi.NewRemoveKeyboard(true)
 				msg.ReplyMarkup = newKeyboard(data.links)
 			}
 		} else {
@@ -131,12 +114,8 @@ func main() {
 
 func newKeyboard(btns []buttonLink) tgbotapi.InlineKeyboardMarkup {
 	var out [][]tgbotapi.InlineKeyboardButton
-
 	for _, btn := range btns {
-		out = append(out, []tgbotapi.InlineKeyboardButton{
-			tgbotapi.NewInlineKeyboardButtonURL(btn.Name, btn.Link),
-			tgbotapi.NewInlineKeyboardButtonData(emoji, btnData),
-		})
+		out = append(out, []tgbotapi.InlineKeyboardButton{tgbotapi.NewInlineKeyboardButtonURL(btn.Name, btn.Link)})
 	}
 
 	kbrd := tgbotapi.NewInlineKeyboardMarkup(out...)
