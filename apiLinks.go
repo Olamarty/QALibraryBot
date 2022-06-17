@@ -25,4 +25,8 @@ var apiLinks = []buttonLink{
 		Name: "Коротко о GoCD",
 		Link: "https://youtu.be/Z03XAMPrtw4",
 	},
+	{
+		Name: "Что такое Swagger",
+		Link: "https://highload.today/swagger-api/",
+	},
 }

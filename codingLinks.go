@@ -33,4 +33,8 @@ var codingLinks = []buttonLink{
 		Name: "Рефакторинг (book)",
 		Link: "https://codernet.ru/books/software_development/martin_fauler_refaktoring/",
 	},
+	{
+		Name: "Учебник ASP.NET",
+		Link: "https://docs.microsoft.com/ru-ru/aspnet/core/getting-started/?view=aspnetcore-6.0&tabs=windows",
+	},
 }
