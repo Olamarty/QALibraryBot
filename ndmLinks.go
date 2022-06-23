@@ -17,4 +17,12 @@ var ndmLinks = []buttonLink{
 		Name: "Грумминг автотестов",
 		Link: "https://docs.google.com/spreadsheets/d/1RxN2ZruqLNkPLMMe3mKhU-4LZqIl0Ncp3ayPyQztgk8/edit#gid=0",
 	},
+	{
+		Name: "Манифест качества Keenetic",
+		Link: "https://docs.google.com/document/d/1D57xk5hBGbrfDQqfUGQyT0Q-HHhUNsCuciKbW1EDjo8/edit#",
+	},
+	{
+		Name: "MiroMindMap",
+		Link: "https://miro.com/app/board/uXjVOs5OeDs=/?share_link_id=432357833385",
+	},
 }
